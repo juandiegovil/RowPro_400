@@ -5,6 +5,8 @@
  */
 //sam isbeautifyul
 
+//NEW CHANGES
+
 import java.util.Arrays;
 import java.util.Random;    //To generate random spots for queend
 
