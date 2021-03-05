@@ -29,7 +29,7 @@ float strokerate[3];
 float prevtime_strokes[3];
 
 float total_strokes = 0;
-
+int stroke_count = 0;
 /*
 //Main variables
 boolean on_or_off;
@@ -81,9 +81,11 @@ if (IMU.accelerationAvailable()) {
 }
 
 float stroke_rate (float input) {
+  delay(100);
   //input is the value from accelerometer
   //calculation one stroke
   if (input >= impulse){
+    stroke_count++;
     Serial.print("Stroke Rate: ");
     Serial.println ();
     Serial.print ("current_time   ");
@@ -106,7 +108,7 @@ float stroke_rate (float input) {
     for (int i = 0; i < 2; i++){
      
       prevtime_strokes[i] = prevtime_strokes[i + 1];
-      delay(9);
+      
       Serial.println("check2");
     }
     Serial.println("check3");
