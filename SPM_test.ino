@@ -112,9 +112,9 @@ float stroke_rate (float input) {
     Serial.println("check3");
     current_time = millis();
     Serial.println("check4");
-    prevtime_strokes[2] = current_time; 
+    prevtime_strokes[0] = current_time; //changed to 0 element in array
     Serial.println("check5");
-    interval_strokes = prevtime_strokes[2] - prevtime_strokes[1]; 
+    interval_strokes = (prevtime_strokes[0] - prevtime_strokes[2])/2; // total time between strokes 1-3 divided by 2
     Serial.println("check6");
     //interval=current_time-prev_time;
     
