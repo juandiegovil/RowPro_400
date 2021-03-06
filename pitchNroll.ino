@@ -3,7 +3,7 @@
    by Dejan, https://howtomechatronics.com
 */
 
-
+float AccX, AccY, AccZ, GyroX, GyroY, GyroZ;
 float accAngleX, accAngleY, gyroAngleX, gyroAngleY, gyroAngleZ;
 float roll, pitch, yaw;
 float AccErrorX, AccErrorY, GyroErrorX, GyroErrorY, GyroErrorZ;
@@ -11,7 +11,23 @@ float elapsedTime, currentTime, previousTime;
 int c = 0;
 
 void setup() {
-  Serial.begin(19200);
+  Serial.begin(57600);
+  while (!Serial);
+  Serial.println("Started");
+
+  if (!IMU.begin()) {
+    Serial.println("Failed to initialize IMU!");
+    while (1);
+  }
+  Serial.print(IMU.accelerationSampleRate());
+  Serial.println(" Hz");
+  Serial.println();
+  Serial.println("Acceleration in G's");
+  Serial.println("X\tY\tZ");
+  calculate_IMU_error();
+  delay(20);
+}
+
  /* Wire.begin();                      // Initialize comunication
   Wire.beginTransmission(MPU);       // Start communication with MPU6050 // MPU=0x68
   Wire.write(0x6B);                  // Talk to the register 6B
@@ -31,16 +47,12 @@ void setup() {
   delay(20);
   */
   // Call this function if you need to get the IMU error values for your module
-  calculate_IMU_error();
-  delay(20);
 
-}
-
-void pitchNroll(float AccX,float AccY,float AccZ,float GyroX,float GyroY,float GyroZ) {
-  
-float accAngleX, accAngleY, gyroAngleX, gyroAngleY, gyroAngleZ;
-float roll, pitch, yaw;
-float AccErrorX, AccErrorY, GyroErrorX, GyroErrorY, GyroErrorZ;
+void loop() {
+//void pitchNroll(float AccX,float AccY,float AccZ,float GyroX,float GyroY,float GyroZ) {
+   float accAngleX, accAngleY, gyroAngleX, gyroAngleY, gyroAngleZ;
+   float roll, pitch, yaw;
+   float AccErrorX, AccErrorY, GyroErrorX, GyroErrorY, GyroErrorZ;
 // === Read acceleromter data === //
 /*  Wire.beginTransmission(MPU);
   Wire.write(0x3B); // Start with register 0x3B (ACCEL_XOUT_H)
