@@ -53,6 +53,16 @@ void loop() {
    float accAngleX, accAngleY, gyroAngleX, gyroAngleY, gyroAngleZ;
    float roll, pitch, yaw;
    float AccErrorX, AccErrorY, GyroErrorX, GyroErrorY, GyroErrorZ;
+   
+   if (IMU.accelerationAvailable()) {
+    IMU.readAcceleration(AccX, AxxY, AccZ);
+    Serial.print(x);
+    Serial.print('\t');
+    Serial.print(y);
+    Serial.print('\t');
+    Serial.println(z);
+  } 
+
 // === Read acceleromter data === //
 /*  Wire.beginTransmission(MPU);
   Wire.write(0x3B); // Start with register 0x3B (ACCEL_XOUT_H)
