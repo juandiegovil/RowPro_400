@@ -85,11 +85,11 @@ int basicRoll(float AccX,float AccY,float AccZ,float GyroX,float GyroY,float Gyr
    // Calculating the Roll angle (rotation around X-axis)
    int angle;
    angle = atan(-1 * AccY / sqrt(pow(AccX, 2) + pow(AccZ, 2))) * 180 / PI;
-   Serial.print("Roll ");
+   /*Serial.print("Roll ");
    Serial.print("Angle: ");
    Serial.print(abs(angle));
    Serial.print("     ");
-   Serial.print("deg");
+   Serial.print("deg");*/
    delay(50);
    return angle;
     
