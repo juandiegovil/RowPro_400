@@ -4,6 +4,8 @@
 */
 #include <Arduino_LSM9DS1.h>
 
+void basicRoll(float AccX, float AccY, float AccZ, float GyroX, float GyroY, float GyroZ);
+int angle;
 /*void calculate_IMU_error();
 //float AccX,float AccY,float AccZ,float GyroX,float GyroY,float GyroZ
 float AccX, AccY, AccZ, GyroX, GyroY, GyroZ;
@@ -16,7 +18,6 @@ float GyroErrorY=0;
 float GyroErrorZ =0;
 float elapsedTime, currentTime, previousTime;
 int c = 0;
-int angle;
 
 void setup() {
   Serial.begin(19200);
