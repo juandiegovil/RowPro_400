@@ -57,7 +57,7 @@ void setup() {
   // Call this function if you need to get the IMU error values for your module
 
 //void loop() {
-void pitchNroll(float AccX,float AccY,float AccZ,float GyroX,float GyroY,float GyroZ) {
+void basicRoll(float AccX,float AccY,float AccZ,float GyroX,float GyroY,float GyroZ) {
 
    /*
    if ((IMU.accelerationAvailable())&& (IMU.gyroscopeAvailable()))
