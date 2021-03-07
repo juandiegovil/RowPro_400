@@ -1,11 +1,8 @@
 /*
 
 */
-#include "timing_V1.ino";
-#include "stroke_per_min.ino";
-#include "changeInAngle.ino";
-#include "Smoothing_copy.ino";
-#include "accelerometer-test.ino";
+#include "SPM_test_M4.ino";
+#include "BasicRoll.ino";
 
 void readAccAndGyro();
 void printOutput();
