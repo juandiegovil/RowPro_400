@@ -16,6 +16,7 @@ void setup() {
   filter.begin(sensorRate);
   Serial.println("Setup complete!");
 }  
+
 void loop() {
   float xAcc, yAcc, zAcc;
   float xGyro, yGyro, zGyro;
@@ -29,3 +30,4 @@ void loop() {
     Serial.println("pitch: " + String(pitchFiltered));
     pitchFilteredOld = pitchFiltered;
   }
+}
