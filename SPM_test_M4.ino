@@ -1,7 +1,7 @@
-#include <LiquidCrystal_I2C.h>
+//#include <LiquidCrystal_I2C.h>
 #include <Arduino_LSM9DS1.h>
-#include <Wire.h> 
-LiquidCrystal_I2C lcd(0x27, 20, 4);
+//#include <Wire.h> 
+//LiquidCrystal_I2C lcd(0x27, 20, 4);
 float stroke_rate (float input);
 
 //Timing variables
