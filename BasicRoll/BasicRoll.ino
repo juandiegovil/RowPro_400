@@ -4,8 +4,7 @@
 */
 #include <Arduino_LSM9DS1.h>
 
-void basicRoll(float AccX, float AccY, float AccZ, float GyroX, float GyroY, float GyroZ);
-int angle;
+int basicRoll(float AccX, float AccY, float AccZ, float GyroX, float GyroY, float GyroZ);
 /*void calculate_IMU_error();
 //float AccX,float AccY,float AccZ,float GyroX,float GyroY,float GyroZ
 float AccX, AccY, AccZ, GyroX, GyroY, GyroZ;
@@ -18,6 +17,7 @@ float GyroErrorY=0;
 float GyroErrorZ =0;
 float elapsedTime, currentTime, previousTime;
 int c = 0;
+int angle;
 
 void setup() {
   Serial.begin(19200);
@@ -58,7 +58,7 @@ void setup() {
   // Call this function if you need to get the IMU error values for your module
 
 //void loop() {
-void basicRoll(float AccX,float AccY,float AccZ,float GyroX,float GyroY,float GyroZ) {
+int basicRoll(float AccX,float AccY,float AccZ,float GyroX,float GyroY,float GyroZ) {
 
    /*
    if ((IMU.accelerationAvailable())&& (IMU.gyroscopeAvailable()))
@@ -83,6 +83,7 @@ void basicRoll(float AccX,float AccY,float AccZ,float GyroX,float GyroY,float Gy
       else if (axis == 1) {*/
     
    // Calculating the Roll angle (rotation around X-axis)
+   int angle;
    angle = atan(-1 * AccY / sqrt(pow(AccX, 2) + pow(AccZ, 2))) * 180 / PI;
    Serial.print("Roll ");
    Serial.print("Angle: ");
@@ -90,6 +91,7 @@ void basicRoll(float AccX,float AccY,float AccZ,float GyroX,float GyroY,float Gy
    Serial.print("     ");
    Serial.print("deg");
    delay(50);
+   return angle;
     
     /*Serial.print(" Acc and Gyro Values");
     Serial.print(AccX);
