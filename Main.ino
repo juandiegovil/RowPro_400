@@ -117,5 +117,4 @@ void displayOutput() {
     
     lcd.setCursor(15, 3);
     lcd.print(rollAngle);
-
 }
