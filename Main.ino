@@ -30,6 +30,7 @@ float total_strokes = 0;
 
 //Main variables
 boolean on_or_off;
+float AccX, AccY, AccZ, GyroX, GyroY, GyroZ;
 float angular_velocity;
 float smooth_angular_velocity;
 float changeInAngle;
@@ -37,6 +38,15 @@ float accelerations;
 float smooth_accelarations;
 
 void setup() {
+    Serial.begin(19200);
+    while (!Serial);
+     Serial.println("Started");
+
+    if (!IMU.begin()) {
+        Serial.println("Failed to initialize IMU!");
+        while (1);
+    }
+    delay(20);
     //timing
     //accelorometer data
     //gyro data
