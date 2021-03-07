@@ -18,14 +18,14 @@ const int numReadings = 10;
 int readings[numReadings];      // the readings from the analog input
 int readIndex = 0;              // the index of the current reading
 int total = 0; 
-*/
+
 
 //Strokes variables
 float interval_strokes, current_time, StrokeRate; //the difference between 2 strokes
 float impulse = 1.0; //the threshold at which something will be considered a stroke
 float prevtime_strokes[3];
 int stroke_count = 0;
-/*
+
 //Main variables
 boolean on_or_off;
 long angular_velocity;
@@ -33,7 +33,7 @@ long smooth_angular_velocity;
 long changeInAngle;
 long accelerations;
 long smooth_accelarations;
-*/
+
 
 void setup() 
 {
@@ -85,44 +85,47 @@ void loop()
     delay(50);
   } 
 
-}
+}*/
 
-float stroke_rate (float input) 
+float strokeRate(float acceleration, float impulse, float prevtimeStrokes, int strokeCount) 
 { 
   //input is the value from accelerometer
   //calculation one stroke
-  if (input >= impulse)
+  float intervalStrokes;
+  
+  if (acceleration >= impulse)
   {
-    current_time = millis();
+    //current_time = millis();
     
-    stroke_count++;
-    Serial.print("Stroke Count:  ");
-    Serial.println(stroke_count);
+    strokeCount++;
+    /*Serial.print("Stroke Count:  ");
+    Serial.println(strokeCount);
     lcd.setCursor(15, 2);
-    lcd.print(stroke_count);
-    Serial.print ("current_time   ");
-    Serial.println(current_time);
-    Serial.println("check1");
+    lcd.print(strokeCount);
+    Serial.print ("currentTime   ");*/
+    //Serial.println(current_time);
+    //Serial.println("check1");
     
     for (int i = 1; i >=0; i--)
     {
-      prevtime_strokes[i+1] = prevtime_strokes[i];
-      Serial.println("in for loop");
+      prevtimeStrokes[i+1] = prevtimeStrokes[i];
+      //Serial.println("in for loop");
     }
-    Serial.println("out of for loop");
-    prevtime_strokes[0] = current_time; //load current time into array [0]
-    Serial.print ("prevtime_strokes array:   ");
-    Serial.println(prevtime_strokes[0]);
-    Serial.println(prevtime_strokes[1]);
-    Serial.println(prevtime_strokes[2]);
-    interval_strokes = (prevtime_strokes[0] - prevtime_strokes[2])/2; // total time between strokes 1-3 divided by 2
-    Serial.print("time between stroke in ms:  ");
-    Serial.println(interval_strokes);
-    StrokeRate = 60/(interval_strokes/1000); 
+    //Serial.println("out of for loop");
+    prevtimeStrokes[0] = millis();
+    //prevtime_strokes[0] = current_time; //load current time into array [0]
+    /*Serial.print ("prevtimeStrokes array:   ");
+    Serial.println(prevtimeStrokes[0]);
+    Serial.println(prevtimeStrokes[1]);
+    Serial.println(prevtimeStrokes[2]);*/
+    intervalStrokes = (prevtimeStrokes[0] - prevtimeStrokes[2])/2; // total time between strokes 1-3 divided by 2
+    /*Serial.print("time between stroke in ms:  ");
+    Serial.println(intervalStrokes);
+    //strokeRate = 60/(interval_strokes/1000); 
     lcd.setCursor(16, 1);
-    lcd.print(StrokeRate);
-    Serial.print("Stroke Rate:  ");
-    Serial.println(StrokeRate);
+    lcd.print(strokeRate);
+    Serial.print("Stroke Rate:  "); */
+    //Serial.println(strokeRate);
   } 
-  return StrokeRate;
+  return (60/(intervalStrokes/1000));
 }
