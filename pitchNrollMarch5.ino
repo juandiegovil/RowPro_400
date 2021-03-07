@@ -57,9 +57,7 @@ void setup() {
 
 void loop() {
 //void pitchNroll(float AccX,float AccY,float AccZ,float GyroX,float GyroY,float GyroZ) {
-   float accAngleX, accAngleY, gyroAngleX, gyroAngleY, gyroAngleZ;
-   float roll, pitch, yaw;
-   float AccErrorX, AccErrorY, GyroErrorX, GyroErrorY, GyroErrorZ;
+
    
    if ((IMU.accelerationAvailable())&& (IMU.gyroscopeAvailable()))
    {
